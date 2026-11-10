@@ -647,17 +647,9 @@ fn handle_shared_keys(
             app.queue_fuzzy_file_picker(app.picker_dir());
             Ok(SharedOutcome::Handled)
         }
-        KeyCode::Char('P') => {
+        KeyCode::Char('F') => {
             app.queue_file_picker(app.picker_dir());
             Ok(SharedOutcome::Handled)
-        }
-        KeyCode::Char('p') => {
-            if app.mode() == crate::app::AppMode::Document {
-                app.open_path_popup();
-                Ok(SharedOutcome::Handled)
-            } else {
-                Ok(SharedOutcome::NotHandled)
-            }
         }
         _ => Ok(SharedOutcome::NotHandled),
     }
@@ -707,6 +699,14 @@ fn handle_document_keys(app: &mut App, key: &KeyEvent) -> bool {
         }
         KeyCode::Char(' ') => {
             app.scroll_page_down();
+            true
+        }
+        KeyCode::Char('p') => {
+            app.scroll_top();
+            true
+        }
+        KeyCode::Char('P') => {
+            app.open_path_popup();
             true
         }
         KeyCode::Char('t') => {
@@ -825,5 +825,45 @@ mod tests {
         let key = KeyEvent::new(KeyCode::Char(' '), KeyModifiers::SHIFT);
         assert!(handle_document_keys(&mut app, &key));
         assert_eq!(app.scroll(), 20);
+    }
+
+    #[test]
+    fn p_scrolls_to_top_in_document_mode() {
+        let lines = (0..100).map(|i| Line::from(i.to_string())).collect();
+        let mut app = App::new(
+            lines,
+            Vec::new(),
+            "test".to_string(),
+            false,
+            false,
+            None,
+            None,
+        );
+        app.content_area = ratatui::layout::Rect::new(0, 0, 80, 10);
+        app.scroll_to(40);
+
+        let key = KeyEvent::new(KeyCode::Char('p'), KeyModifiers::NONE);
+        assert!(handle_document_keys(&mut app, &key));
+        assert_eq!(app.scroll(), 0);
+        assert!(!app.is_path_popup_open());
+    }
+
+    #[test]
+    fn shift_p_opens_path_popup_in_document_mode() {
+        let lines = (0..100).map(|i| Line::from(i.to_string())).collect();
+        let mut app = App::new(
+            lines,
+            Vec::new(),
+            "test".to_string(),
+            false,
+            false,
+            None,
+            None,
+        );
+        app.content_area = ratatui::layout::Rect::new(0, 0, 80, 10);
+
+        let key = KeyEvent::new(KeyCode::Char('P'), KeyModifiers::SHIFT);
+        assert!(handle_document_keys(&mut app, &key));
+        assert!(app.is_path_popup_open());
     }
 }

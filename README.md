@@ -390,12 +390,12 @@ leaf --theme rose-pine README.md
 | Key | Action | Key | Action |
 |---|---|---|---|
 | `j` / `↓` | Scroll down | `?` | Show help popup |
-| `k` / `↑` | Scroll up | `p` | Show file path |
-| `d` / PgDn | Page down (20 lines) | `Shift+L` | Toggle line numbers |
+| `k` / `↑` | Scroll up | `p` | Go to top |
+| `d` / PgDn | Page down (20 lines) | `P` | Show file path |
 | `u` / PgUp | Page up (20 lines) | `Shift+T` | Open theme picker |
-| `Space` / `Shift+Space` | Page down / up (20 lines) | | |
+| `Space` / `Shift+Space` | Page down / up (20 lines) | `Shift+L` | Toggle line numbers |
 | `g` / Home | Top | `Shift+E` | Open editor picker |
-| `G` / End | Bottom | `Shift+P` | Open file browser |
+| `G` / End | Bottom | `Shift+F` | Open file browser |
 | `1-9` / `0+1-9` | Jump / reverse jump (TOC) | `Shift+M` | Toggle mouse capture |
 | `J/K` / `U/D` | Navigate TOC | `Ctrl+P` | Open fuzzy picker |
 | `y/Y` / `c/C` | Focus code block | `Ctrl+H` | Open file history picker |

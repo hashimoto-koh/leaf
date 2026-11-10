@@ -136,7 +136,7 @@ fn render_help_document(f: &mut Frame, _app: &App) {
             Span::styled("page up", text_style),
         ]),
         Line::from(vec![
-            Span::styled("g/G        ", key_style),
+            Span::styled("g/G, p     ", key_style),
             Span::styled("top/bottom", text_style),
             Span::raw("       "),
             Span::styled("dbl-click   ", key_style),
@@ -206,7 +206,7 @@ fn render_help_document(f: &mut Frame, _app: &App) {
             Span::styled("goto", text_style),
         ]),
         Line::from(vec![
-            Span::styled("shift+p    ", key_style),
+            Span::styled("shift+f    ", key_style),
             Span::styled("file browser", text_style),
             Span::raw("     "),
             Span::styled("ctrl+p      ", key_style),
@@ -220,7 +220,7 @@ fn render_help_document(f: &mut Frame, _app: &App) {
             Span::styled("hist", text_style),
         ]),
         Line::from(vec![
-            Span::styled("p          ", key_style),
+            Span::styled("P          ", key_style),
             Span::styled("path viewer", text_style),
             Span::raw("      "),
             Span::styled("q           ", key_style),
