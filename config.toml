@@ -131,7 +131,7 @@ watch = false
 # Default: false
 # scroll-with-enter = false
 
-# Scroll distance for u/d and PageUp/PageDown keys
+# Scroll distance for u/d, Space/Shift+Space, and PageUp/PageDown keys
 # Accepted formats:
 #   "NN%":     viewport percentage
 #   "NNrows":  fixed number of rows

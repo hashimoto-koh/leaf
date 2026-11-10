@@ -129,6 +129,13 @@ fn render_help_document(f: &mut Frame, _app: &App) {
             Span::styled("copy word", text_style),
         ]),
         Line::from(vec![
+            Span::styled("space      ", key_style),
+            Span::styled("page down", text_style),
+            Span::raw("   "),
+            Span::styled("shift+space ", key_style),
+            Span::styled("page up", text_style),
+        ]),
+        Line::from(vec![
             Span::styled("g/G        ", key_style),
             Span::styled("top/bottom", text_style),
             Span::raw("       "),

@@ -292,7 +292,7 @@ tab-title-length = -1        # terminal tab title truncation (min: 20, -1: no tr
 file-history-length = 0      # recent file history length (0 disables, max: 50)
 hyper-link-prefix = "#"      # single character before link text ("" for none)
 scroll-with-enter = false    # enable preview scrolling with Enter and Alt+Enter
-page-scroll-size = "20rows"  # scroll distance for u/d and PageUp/PageDown keys
+page-scroll-size = "20rows"  # scroll distance for u/d, Space/Shift+Space, PageUp/PageDown
 ```
 
 To reset the configuration to defaults:
@@ -393,6 +393,7 @@ leaf --theme rose-pine README.md
 | `k` / `↑` | Scroll up | `p` | Show file path |
 | `d` / PgDn | Page down (20 lines) | `Shift+L` | Toggle line numbers |
 | `u` / PgUp | Page up (20 lines) | `Shift+T` | Open theme picker |
+| `Space` / `Shift+Space` | Page down / up (20 lines) | | |
 | `g` / Home | Top | `Shift+E` | Open editor picker |
 | `G` / End | Bottom | `Shift+P` | Open file browser |
 | `1-9` / `0+1-9` | Jump / reverse jump (TOC) | `Shift+M` | Toggle mouse capture |

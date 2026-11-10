@@ -701,6 +701,10 @@ fn handle_document_keys(app: &mut App, key: &KeyEvent) -> bool {
             app.scroll_toc_up(app.toc_half_page_step());
             true
         }
+        KeyCode::Char(' ') if key.modifiers.contains(KeyModifiers::SHIFT) => {
+            app.scroll_page_up();
+            true
+        }
         KeyCode::Char(' ') => {
             app.scroll_page_down();
             true
@@ -799,6 +803,26 @@ mod tests {
         app.content_area = ratatui::layout::Rect::new(0, 0, 80, 10);
 
         let key = KeyEvent::new(KeyCode::Char(' '), KeyModifiers::NONE);
+        assert!(handle_document_keys(&mut app, &key));
+        assert_eq!(app.scroll(), 20);
+    }
+
+    #[test]
+    fn shift_space_pages_up_in_document_mode() {
+        let lines = (0..100).map(|i| Line::from(i.to_string())).collect();
+        let mut app = App::new(
+            lines,
+            Vec::new(),
+            "test".to_string(),
+            false,
+            false,
+            None,
+            None,
+        );
+        app.content_area = ratatui::layout::Rect::new(0, 0, 80, 10);
+        app.scroll_to(40);
+
+        let key = KeyEvent::new(KeyCode::Char(' '), KeyModifiers::SHIFT);
         assert!(handle_document_keys(&mut app, &key));
         assert_eq!(app.scroll(), 20);
     }
